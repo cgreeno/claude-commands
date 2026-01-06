@@ -1,0 +1,37 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Go
+*.exe
+vendor/
+
+# Elixir
+_build/
+deps/
+*.ez
+*.beam
+.elixir_ls/
+
+# Ruby
+.bundle/
+vendor/bundle/
+*.gem
+.ruby-version
+.ruby-gemset
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Temp/output directories
+tmp_output/
+
+# Local settings (may contain sensitive data)
+settings.local.json
