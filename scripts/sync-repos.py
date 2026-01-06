@@ -5,8 +5,8 @@
 # ///
 """Sync all app-* repos from GitHub to _apps directory.
 
-Run from anywhere: ~/_apps/.claude/scripts/sync-repos.py
-Or add an alias: alias sync-repos='~/_apps/.claude/scripts/sync-repos.py'
+Run from anywhere: ~/.claude/scripts/sync-repos.py
+Or add an alias: alias sync-repos='~/.claude/scripts/sync-repos.py'
 """
 
 import subprocess

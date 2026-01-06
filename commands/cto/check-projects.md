@@ -13,7 +13,7 @@ If no date range provided, ask the user: "How many days back should I look? (e.g
 
 ## Step 1: Read Project List and Filter by Membership
 
-1. Read `~/_apps/command_resources/.claude/projects_to_monitor.md`
+1. Read `~/.claude/command_resources/projects_to_monitor.md`
 2. Extract ONLY channels where **Your Membership: ✅ Member** is present
 3. Ignore all channels where **Your Membership: ❌ Not a member**
 4. This ensures you only monitor projects where you have visibility
@@ -77,7 +77,7 @@ For each project that has updates:
 
 ## Step 4: Save to JSON Database
 
-**File location:** `~/_apps/.claude/cto-reports/project-data/project-updates.json`
+**File location:** `~/_apps/_claude/cto-reports/project-data/project-updates.json`
 
 **Structure:**
 ```json
@@ -195,7 +195,7 @@ Use this data for:
 - Deep dives with `/check-project-deep <name>`
 ```
 
-**Save this report to:** `~_apps/_apps/.claude/cto-reports/project-updates-[YYYY-MM-DD].md`
+**Save this report to:** `~/_apps/_claude/cto-reports/project-updates-[YYYY-MM-DD].md`
 
 ---
 

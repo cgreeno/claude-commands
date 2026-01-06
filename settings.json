@@ -1,0 +1,143 @@
+{
+  "model": "opus",
+  "permissions": {
+    "additionalDirectories": [
+      "~/_apps"
+    ],
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "WebSearch",
+      "WebFetch",
+      "Bash(cat:*)",
+      "Bash(ls:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(find:*)",
+      "Bash(tree:*)",
+      "Bash(wc:*)",
+      "Bash(file:*)",
+      "Bash(which:*)",
+      "Bash(type:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(git remote:*)",
+      "Bash(git fetch:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git describe:*)",
+      "Bash(git config --get:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git blame:*)",
+      "Bash(git checkout:*)",
+      "Bash(git stash:*)",
+      "Bash(git pull:*)",
+      "Bash(go doc:*)",
+      "Bash(go list:*)",
+      "Bash(go version:*)",
+      "Bash(go build:*)",
+      "Bash(go:*)",
+      "Bash(golangci-lint:*)",
+      "Bash(python --version:*)",
+      "Bash(python:*)",
+      "Bash(pip:*)",
+      "Bash(node --version:*)",
+      "Bash(node:*)",
+      "Bash(npm list:*)",
+      "Bash(npm:*)",
+      "Bash(yarn:*)",
+      "Bash(npx:*)",
+      "Bash(tsc:*)",
+      "Bash(tsx:*)",
+      "Bash(mix:*)",
+      "Bash(iex:*)",
+      "Bash(elixir:*)",
+      "Bash(ruby:*)",
+      "Bash(bundle:*)",
+      "Bash(gem:*)",
+      "Bash(houston:*)",
+      "Bash(awk:*)",
+      "Bash(xargs:*)",
+      "Bash(echo:*)",
+      "Bash(grep:*)",
+      "Bash(sed:*)",
+      "Bash(env:*)",
+      "Bash(printenv:*)",
+      "Bash(pwd:*)",
+      "Bash(whoami:*)",
+      "Bash(hostname:*)",
+      "Bash(date:*)",
+      "Bash(uname:*)",
+      "Bash(docker ps:*)",
+      "Bash(docker logs:*)",
+      "Bash(docker images:*)",
+      "Bash(docker inspect:*)",
+      "Bash(docker exec:*)",
+      "WebFetch(domain:docs.datadoghq.com)",
+      "WebFetch(domain:www.datadoghq.com)",
+      "Read(/Users/chris/.vscode/extensions/**)",
+      "Read(/Users/chris/Library/**)",
+      "mcp__datadog__search_datadog_dashboards",
+      "mcp__datadog__get_datadog_metric",
+      "mcp__slack__slack_list_channels",
+      "mcp__slack__slack_get_channel_history"
+    ],
+    "ask": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude is waiting\" with title \"Claude Code\"'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write(*.go)",
+        "hooks": [{"type": "command", "command": "gofmt -w . && golangci-lint run --fix"}]
+      },
+      {
+        "matcher": "Write(*.ex)",
+        "hooks": [{"type": "command", "command": "mix format"}]
+      },
+      {
+        "matcher": "Write(*.exs)",
+        "hooks": [{"type": "command", "command": "mix format"}]
+      },
+      {
+        "matcher": "Write(*.ts)",
+        "hooks": [{"type": "command", "command": "npx eslint --fix"}]
+      },
+      {
+        "matcher": "Write(*.tsx)",
+        "hooks": [{"type": "command", "command": "npx eslint --fix"}]
+      },
+      {
+        "matcher": "Write(*.py)",
+        "hooks": [{"type": "command", "command": "ruff format && ruff check --fix"}]
+      },
+      {
+        "matcher": "Write(*.rb)",
+        "hooks": [{"type": "command", "command": "rubocop -a"}]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "/Users/chris/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true
+  }
+}

@@ -5,7 +5,7 @@ Utility scripts for managing the _apps workspace.
 ## Setup
 
 ```bash
-cd ~/_apps/.claude/scripts
+cd ~/.claude/scripts
 uv venv
 source .venv/bin/activate
 uv pip install -r requirements.txt
