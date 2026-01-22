@@ -30,7 +30,7 @@
 
 ## Python (Default Language)
 
-@~/_apps/_ai-standard/python.md
+@~/.claude/standards/python.md
 
 - Python is go-to language for most tasks
 - Use UV for package management
@@ -39,7 +39,7 @@
 
 ## Go (For Houston CLI)
 
-@~/_apps/ai-standards/go.md
+@~/.claude/standards/go.md
 
 - Used for Houston CLI tool
 - I'm a beginner - treat me like a junior engineer with 2 years experience
@@ -49,7 +49,7 @@
 
 ## TypeScript (For CLI When Required)
 
-@~/_apps/ai-standards/typescript.md
+@~/.claude/standards/typescript.md
 
 - Used for CLI work when necessary
 - I'm very new - treat me like junior engineer with 1 year experience

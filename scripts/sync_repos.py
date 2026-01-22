@@ -23,9 +23,13 @@ APPS_DIR = Path.home() / "_apps"
 
 
 def get_app_repos() -> list[str]:
-    """Fetch all repos matching the prefix from GitHub."""
+    """Fetch all non-archived repos matching the prefix from GitHub."""
     result = subprocess.run(
-        ["gh", "repo", "list", ORG, "--limit", "1000", "--json", "name", "--jq", f".[] | select(.name | startswith(\"{REPO_PREFIX}\")) | .name"],
+        [
+            "gh", "repo", "list", ORG, "--limit", "1000",
+            "--json", "name,isArchived",
+            "--jq", f'.[] | select(.name | startswith("{REPO_PREFIX}")) | select(.isArchived == false) | .name',
+        ],
         capture_output=True,
         text=True,
         check=True,
@@ -40,9 +44,8 @@ def sync_repo(repo_name: str) -> tuple[str, bool]:
 
     if repo_path.exists():
         try:
-            # Use --rebase --autostash to handle local changes gracefully
             subprocess.run(
-                ["git", "-C", str(repo_path), "pull", "--rebase", "--autostash"],
+                ["git", "-C", str(repo_path), "pull"],
                 capture_output=True,
                 text=True,
                 check=True,

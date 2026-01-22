@@ -1,9 +1,5 @@
 {
-  "model": "opus",
   "permissions": {
-    "additionalDirectories": [
-      "~/_apps"
-    ],
     "allow": [
       "Read",
       "Glob",
@@ -59,6 +55,7 @@
       "Bash(bundle:*)",
       "Bash(gem:*)",
       "Bash(houston:*)",
+      "Bash(h:*)",
       "Bash(awk:*)",
       "Bash(xargs:*)",
       "Bash(echo:*)",
@@ -89,8 +86,13 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)"
+    ],
+    "defaultMode": "default",
+    "additionalDirectories": [
+      "~/_apps"
     ]
   },
+  "model": "opus",
   "hooks": {
     "Stop": [
       {
@@ -104,32 +106,13 @@
     ],
     "PostToolUse": [
       {
-        "matcher": "Write(*.go)",
-        "hooks": [{"type": "command", "command": "gofmt -w . && golangci-lint run --fix"}]
-      },
-      {
-        "matcher": "Write(*.ex)",
-        "hooks": [{"type": "command", "command": "mix format"}]
-      },
-      {
-        "matcher": "Write(*.exs)",
-        "hooks": [{"type": "command", "command": "mix format"}]
-      },
-      {
-        "matcher": "Write(*.ts)",
-        "hooks": [{"type": "command", "command": "npx eslint --fix"}]
-      },
-      {
-        "matcher": "Write(*.tsx)",
-        "hooks": [{"type": "command", "command": "npx eslint --fix"}]
-      },
-      {
-        "matcher": "Write(*.py)",
-        "hooks": [{"type": "command", "command": "ruff format && ruff check --fix"}]
-      },
-      {
-        "matcher": "Write(*.rb)",
-        "hooks": [{"type": "command", "command": "rubocop -a"}]
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/format.sh"
+          }
+        ]
       }
     ]
   },
@@ -138,6 +121,11 @@
     "command": "/Users/chris/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "gopls-lsp@claude-plugins-official": true
+    "gopls-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "greptile@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "Notion@claude-plugins-official": true
   }
 }
